@@ -1,0 +1,106 @@
+<div class="converter-container">
+  <div class="header">
+    <h1>🔄 File Converter</h1>
+    <p class="subtitle">Converta seus arquivos entre diferentes formatos</p>
+  </div>
+
+  <div class="converter-card">
+    <!-- Upload Section -->
+    <div class="upload-section">
+      <h2>1. Selecione o Arquivo</h2>
+      <div class="file-input-wrapper">
+        <input 
+          type="file" 
+          id="fileInput"
+          (change)="onFileSelected($event)"
+          [disabled]="isLoading"
+        >
+        <label for="fileInput" class="file-label">
+          <span class="upload-icon">📁</span>
+          <span>{{ selectedFile ? selectedFile.name : 'Escolher arquivo' }}</span>
+        </label>
+      </div>
+      <p class="file-info" *ngIf="selectedFile">
+        Tamanho: {{ formatFileSize(selectedFile.size) }}
+      </p>
+    </div>
+
+    <!-- Conversion Type Selection -->
+    <div class="conversion-section">
+      <h2>2. Escolha o Tipo de Conversão</h2>
+      <select 
+        [(ngModel)]="selectedConversionType" 
+        class="conversion-select"
+        [disabled]="isLoading"
+      >
+        <option *ngFor="let type of conversionTypes" [value]="type.type">
+          {{ type.description }}
+        </option>
+      </select>
+    </div>
+
+    <!-- Convert Button -->
+    <div class="action-section">
+      <button 
+        class="convert-btn"
+        (click)="convertFile()"
+        [disabled]="!selectedFile || isLoading"
+      >
+        <span *ngIf="!isLoading">🚀 Converter Arquivo</span>
+        <span *ngIf="isLoading" class="loading">
+          <span class="spinner"></span>
+          Convertendo...
+        </span>
+      </button>
+    </div>
+
+    <!-- Error Message -->
+    <div class="alert alert-error" *ngIf="errorMessage">
+      <span class="alert-icon">⚠️</span>
+      <span>{{ errorMessage }}</span>
+    </div>
+
+    <!-- Success Result -->
+    <div class="result-section" *ngIf="conversionResult && conversionResult.success">
+      <div class="alert alert-success">
+        <span class="alert-icon">✅</span>
+        <span>{{ conversionResult.message }}</span>
+      </div>
+
+      <div class="result-details">
+        <h3>Detalhes da Conversão</h3>
+        <div class="detail-item">
+          <strong>Arquivo Original:</strong> {{ conversionResult.originalFileName }}
+        </div>
+        <div class="detail-item">
+          <strong>Arquivo Convertido:</strong> {{ conversionResult.convertedFileName }}
+        </div>
+        <div class="detail-item">
+          <strong>Tipo:</strong> {{ conversionDescriptions[conversionResult.conversionType!] }}
+        </div>
+        <div class="detail-item">
+          <strong>Tamanho:</strong> {{ formatFileSize(conversionResult.fileSizeBytes!) }}
+        </div>
+      </div>
+
+      <div class="download-section">
+        <button class="download-btn" (click)="downloadConvertedFile()">
+          📥 Baixar Arquivo Convertido
+        </button>
+        <button class="reset-btn" (click)="reset()">
+          🔄 Nova Conversão
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Info Footer -->
+  <div class="info-footer">
+    <h3>Conversões Suportadas:</h3>
+    <div class="conversion-list">
+      <div class="conversion-item" *ngFor="let type of conversionTypes">
+        <span class="conversion-badge">{{ type.description }}</span>
+      </div>
+    </div>
+  </div>
+</div>
