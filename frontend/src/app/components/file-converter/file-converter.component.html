@@ -23,6 +23,12 @@
       <p class="file-info" *ngIf="selectedFile">
         Tamanho: {{ formatFileSize(selectedFile.size) }}
       </p>
+      
+      <!-- Preview do arquivo -->
+      <div class="file-preview" *ngIf="filePreview">
+        <h3>📄 Preview do Arquivo:</h3>
+        <pre>{{ filePreview }}</pre>
+      </div>
     </div>
 
     <!-- Conversion Type Selection -->
@@ -37,6 +43,11 @@
           {{ type.description }}
         </option>
       </select>
+      
+      <!-- Formato esperado -->
+      <p class="format-hint" *ngIf="getExpectedFormat()">
+        📎 Formato esperado: <strong>{{ getExpectedFormat() }}</strong>
+      </p>
     </div>
 
     <!-- Convert Button -->
