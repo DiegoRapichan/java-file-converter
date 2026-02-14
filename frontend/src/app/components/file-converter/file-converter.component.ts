@@ -26,20 +26,36 @@ export class FileConverterComponent implements OnInit {
   constructor(private fileConversionService: FileConversionService) {}
 
   ngOnInit(): void {
+    // Carrega lista padrão PRIMEIRO
+    this.conversionTypes = [
+      { type: 'CSV_TO_JSON', description: 'CSV para JSON' },
+      { type: 'JSON_TO_CSV', description: 'JSON para CSV' },
+      { type: 'JSON_TO_XML', description: 'JSON para XML' },
+      { type: 'XML_TO_JSON', description: 'XML para JSON' },
+      { type: 'CSV_TO_EXCEL', description: 'CSV para Excel' },
+      { type: 'TEXT_TO_PDF', description: 'Texto para PDF' },
+      { type: 'JSON_TO_PDF', description: 'JSON para PDF' }
+    ];
+    
+    // Tenta carregar da API (se backend estiver rodando)
     this.loadConversionTypes();
   }
 
   /**
-   * Carrega os tipos de conversão suportados
+   * Carrega os tipos de conversão suportados da API (se disponível)
    */
   loadConversionTypes(): void {
     this.fileConversionService.getSupportedConversions().subscribe({
       next: (types) => {
-        this.conversionTypes = types;
+        if (types && types.length > 0) {
+          this.conversionTypes = types;
+          console.log('✅ Tipos carregados da API:', types);
+        }
       },
       error: (error) => {
-        console.error('Error loading conversion types', error);
-        this.errorMessage = 'Erro ao carregar tipos de conversão';
+        console.warn('⚠️ Backend não disponível, usando lista padrão');
+        console.error('Erro:', error.message);
+        // Lista já foi carregada no ngOnInit, não faz nada
       }
     });
   }

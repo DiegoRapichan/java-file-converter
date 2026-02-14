@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, timeout, catchError, of } from 'rxjs';
 import { ConversionResponse, ConversionType, ConversionTypeInfo } from '../models/conversion.model';
 import { environment } from '../../environments/environment';
 
@@ -16,7 +16,13 @@ export class FileConversionService {
    * Obtém todos os tipos de conversão suportados
    */
   getSupportedConversions(): Observable<ConversionTypeInfo[]> {
-    return this.http.get<ConversionTypeInfo[]>(`${this.apiUrl}/convert/types`);
+    return this.http.get<ConversionTypeInfo[]>(`${this.apiUrl}/convert/types`).pipe(
+      timeout(3000), // 3 segundos de timeout
+      catchError(error => {
+        console.warn('API não disponível:', error.message);
+        return of([]); // Retorna array vazio em caso de erro
+      })
+    );
   }
 
   /**

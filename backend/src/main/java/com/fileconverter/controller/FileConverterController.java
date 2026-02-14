@@ -40,10 +40,18 @@ public class FileConverterController {
     @GetMapping("/types")
     @Operation(summary = "Listar tipos de conversão", description = "Retorna todos os tipos de conversão suportados")
     public ResponseEntity<List<ConversionTypeDTO>> getSupportedConversions() {
-        List<ConversionTypeDTO> types = Arrays.stream(ConversionType.values())
-                .map(type -> new ConversionTypeDTO(type.name(), type.getDescription()))
-                .collect(Collectors.toList());
-        return ResponseEntity.ok(types);
+        try {
+            log.info("Fetching conversion types...");
+            List<ConversionTypeDTO> types = Arrays.stream(ConversionType.values())
+                    .map(type -> new ConversionTypeDTO(type.name(), type.getDescription()))
+                    .collect(Collectors.toList());
+            log.info("Returning {} conversion types", types.size());
+            return ResponseEntity.ok(types);
+        } catch (Exception e) {
+            log.error("Error fetching conversion types", e);
+            // Retorna lista vazia em caso de erro
+            return ResponseEntity.ok(List.of());
+        }
     }
 
     @PostMapping(value = "/upload", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
