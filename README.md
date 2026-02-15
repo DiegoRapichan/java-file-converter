@@ -7,8 +7,9 @@ Sistema completo de conversão de arquivos entre diferentes formatos. Spring Boo
 [![Angular](https://img.shields.io/badge/Angular-17-DD0031?style=for-the-badge&logo=angular&logoColor=white)](https://angular.io/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.3-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![Maven](https://img.shields.io/badge/Maven-3.8+-C71A36?style=for-the-badge&logo=apachemaven&logoColor=white)](https://maven.apache.org/)
+[![Deploy Status](https://img.shields.io/badge/Deploy-Live-success?style=for-the-badge)](https://file-converter-frontend-eight.vercel.app)
 
-**🌐 [Demo ao Vivo](#)** | **📖 [Documentação Completa](DOCUMENTATION.md)** | **⚡ [Quick Start](QUICK_START.md)**
+**🌐 [Demo ao Vivo](https://file-converter-frontend-eight.vercel.app)** | **📖 [Documentação Completa](DOCUMENTATION.md)** | **⚡ [Quick Start](QUICK_START.md)**
 
 ---
 
@@ -31,9 +32,10 @@ Sistema completo de conversão de arquivos entre diferentes formatos. Spring Boo
 API REST completa para conversão de arquivos entre múltiplos formatos populares. Desenvolvido com arquitetura full-stack demonstrando boas práticas de engenharia de software, design patterns e princípios SOLID.
 
 **Principais características:**
+
 - 🔄 **7 tipos de conversão** - CSV, JSON, XML, Excel, PDF
 - 🏗️ **Design Patterns** - Strategy, Factory, Dependency Injection
-- 🎯 **SOLID Principles** - Código limpo e manutenível  
+- 🎯 **SOLID Principles** - Código limpo e manutenível
 - 📚 **API REST** - Documentação Swagger completa
 - 🎨 **Interface Moderna** - Angular com UI responsiva
 - ✅ **Pronto para produção** - Deploy facilitado
@@ -46,15 +48,15 @@ API REST completa para conversão de arquivos entre múltiplos formatos populare
 
 ### Conversões Suportadas
 
-| De → Para | Status | Biblioteca |
-|-----------|--------|------------|
-| CSV → JSON | ✅ | Apache Commons CSV + Jackson |
-| JSON → CSV | ✅ | Jackson + Apache Commons CSV |
-| JSON → XML | ✅ | Jackson XML |
-| XML → JSON | ✅ | Jackson XML |
-| CSV → Excel | ✅ | Apache POI |
-| Texto → PDF | ✅ | iText 7 |
-| JSON → PDF | ✅ | iText 7 (tabelas formatadas) |
+| De → Para   | Status | Biblioteca                   |
+| ----------- | ------ | ---------------------------- |
+| CSV → JSON  | ✅     | Apache Commons CSV + Jackson |
+| JSON → CSV  | ✅     | Jackson + Apache Commons CSV |
+| JSON → XML  | ✅     | Jackson XML                  |
+| XML → JSON  | ✅     | Jackson XML                  |
+| CSV → Excel | ✅     | Apache POI                   |
+| Texto → PDF | ✅     | iText 7                      |
+| JSON → PDF  | ✅     | iText 7 (tabelas formatadas) |
 
 ### Recursos da API
 
@@ -79,25 +81,27 @@ API REST completa para conversão de arquivos entre múltiplos formatos populare
 ## 🚀 Tecnologias
 
 ### Backend
-| Tecnologia | Versão | Uso |
-|-----------|--------|-----|
-| **Java** | 17 | Linguagem de programação |
-| **Spring Boot** | 3.2.2 | Framework backend |
-| **Maven** | 3.8+ | Gerenciamento de dependências |
-| **Apache Commons CSV** | 1.10.0 | Processamento de CSV |
-| **Jackson** | - | Serialização JSON/XML |
-| **Apache POI** | 5.2.5 | Manipulação de Excel |
-| **iText 7** | 7.2.5 | Geração de PDF |
-| **SpringDoc OpenAPI** | 2.3.0 | Documentação Swagger |
-| **Lombok** | - | Redução de boilerplate |
+
+| Tecnologia             | Versão | Uso                           |
+| ---------------------- | ------ | ----------------------------- |
+| **Java**               | 17     | Linguagem de programação      |
+| **Spring Boot**        | 3.2.2  | Framework backend             |
+| **Maven**              | 3.8+   | Gerenciamento de dependências |
+| **Apache Commons CSV** | 1.10.0 | Processamento de CSV          |
+| **Jackson**            | -      | Serialização JSON/XML         |
+| **Apache POI**         | 5.2.5  | Manipulação de Excel          |
+| **iText 7**            | 7.2.5  | Geração de PDF                |
+| **SpringDoc OpenAPI**  | 2.3.0  | Documentação Swagger          |
+| **Lombok**             | -      | Redução de boilerplate        |
 
 ### Frontend
-| Tecnologia | Versão | Uso |
-|-----------|--------|-----|
-| **Angular** | 17 | Framework frontend |
-| **TypeScript** | 5.3 | Linguagem fortemente tipada |
-| **RxJS** | 7.8 | Programação reativa |
-| **CSS3** | - | Estilização moderna |
+
+| Tecnologia     | Versão | Uso                         |
+| -------------- | ------ | --------------------------- |
+| **Angular**    | 17     | Framework frontend          |
+| **TypeScript** | 5.3    | Linguagem fortemente tipada |
+| **RxJS**       | 7.8    | Programação reativa         |
+| **CSS3**       | -      | Estilização moderna         |
 
 ---
 
@@ -140,6 +144,7 @@ API REST completa para conversão de arquivos entre múltiplos formatos populare
 ### Design Patterns Implementados
 
 #### 1. **Strategy Pattern**
+
 ```java
 public interface FileConverter {
     void convert(InputStream input, OutputStream output);
@@ -151,11 +156,13 @@ public class JsonToPdfConverter implements FileConverter { ... }
 ```
 
 **Benefícios:**
+
 - ✅ Fácil adicionar novos conversores
 - ✅ Código testável isoladamente
 - ✅ Open/Closed Principle
 
 #### 2. **Factory Pattern**
+
 ```java
 @Component
 public class ConverterFactory {
@@ -166,16 +173,18 @@ public class ConverterFactory {
 ```
 
 **Benefícios:**
+
 - ✅ Centraliza criação de objetos
 - ✅ Esconde complexidade de instanciação
 - ✅ Facilita manutenção
 
 #### 3. **Dependency Injection**
+
 ```java
 @RestController
 public class FileConverterController {
     private final FileConversionService service;
-    
+
     // Spring injeta automaticamente
     public FileConverterController(FileConversionService service) {
         this.service = service;
@@ -184,19 +193,20 @@ public class FileConverterController {
 ```
 
 **Benefícios:**
+
 - ✅ Baixo acoplamento
 - ✅ Fácil fazer testes (mocks)
 - ✅ Inversão de dependências
 
 ### Princípios SOLID Aplicados
 
-| Princípio | Implementação |
-|-----------|---------------|
-| **S**ingle Responsibility | Cada conversor tem uma única responsabilidade |
-| **O**pen/Closed | Extensível via novos conversores sem modificar existentes |
-| **L**iskov Substitution | Qualquer FileConverter pode substituir outro |
-| **I**nterface Segregation | Interface FileConverter enxuta e focada |
-| **D**ependency Inversion | Dependemos de abstrações (interfaces), não implementações |
+| Princípio                 | Implementação                                             |
+| ------------------------- | --------------------------------------------------------- |
+| **S**ingle Responsibility | Cada conversor tem uma única responsabilidade             |
+| **O**pen/Closed           | Extensível via novos conversores sem modificar existentes |
+| **L**iskov Substitution   | Qualquer FileConverter pode substituir outro              |
+| **I**nterface Segregation | Interface FileConverter enxuta e focada                   |
+| **D**ependency Inversion  | Dependemos de abstrações (interfaces), não implementações |
 
 ---
 
@@ -214,26 +224,31 @@ npm -v           # npm 9+
 ### Quick Start
 
 #### 1️⃣ Clone o repositório
+
 ```bash
 git clone https://github.com/DiegoRapichan/java-file-converter.git
 cd java-file-converter
 ```
 
 #### 2️⃣ Backend (Terminal 1)
+
 ```bash
 cd backend
 ./mvnw clean install -DskipTests
 ./mvnw spring-boot:run
 ```
+
 ✅ Backend: `http://localhost:8080`  
 📚 Swagger: `http://localhost:8080/swagger-ui.html`
 
 #### 3️⃣ Frontend (Terminal 2)
+
 ```bash
 cd frontend
 npm install
 npm start
 ```
+
 ✅ Frontend: `http://localhost:4200`
 
 ---
@@ -265,6 +280,7 @@ curl -O http://localhost:8080/api/convert/download/data_abc123.json
 ## 📚 Endpoints da API
 
 ### Base URL
+
 ```
 http://localhost:8080/api
 ```
@@ -272,10 +288,13 @@ http://localhost:8080/api
 ### Endpoints Disponíveis
 
 #### 📋 Listar Tipos de Conversão
+
 ```http
 GET /convert/types
 ```
+
 **Response:**
+
 ```json
 [
   {
@@ -290,6 +309,7 @@ GET /convert/types
 ```
 
 #### 🔄 Converter Arquivo
+
 ```http
 POST /convert/upload
 Content-Type: multipart/form-data
@@ -300,6 +320,7 @@ Parameters:
 ```
 
 **Response (sucesso):**
+
 ```json
 {
   "success": true,
@@ -313,6 +334,7 @@ Parameters:
 ```
 
 **Response (erro):**
+
 ```json
 {
   "success": false,
@@ -322,17 +344,22 @@ Parameters:
 ```
 
 #### ⬇️ Download do Arquivo Convertido
+
 ```http
 GET /convert/download/{fileName}
 ```
+
 **Response:** File (binary)  
 **Headers:** `Content-Disposition: attachment; filename="data.json"`
 
 #### 🏥 Health Check
+
 ```http
 GET /convert/health
 ```
+
 **Response:**
+
 ```json
 {
   "status": "File Converter API is running",
@@ -343,11 +370,13 @@ GET /convert/health
 ### 📖 Documentação Interativa
 
 Swagger UI disponível em:
+
 ```
 http://localhost:8080/swagger-ui.html
 ```
 
 **Features:**
+
 - ✅ Teste todos os endpoints diretamente no navegador
 - ✅ Visualize schemas de request/response
 - ✅ Veja códigos de status HTTP
@@ -357,95 +386,94 @@ http://localhost:8080/swagger-ui.html
 
 ## 🌐 Deploy
 
-### Backend (Railway / Heroku)
+### 🚀 Aplicação em Produção
 
-1. **Railway**
-```bash
-# Railway detecta automaticamente projetos Maven
-railway up
-```
+- **Frontend:** https://file-converter-frontend-eight.vercel.app
+- **Backend API:** https://file-converter-api-udbk.onrender.com
+- **Swagger UI:** https://file-converter-api-udbk.onrender.com/swagger-ui.html
 
-2. **Heroku**
-```bash
-heroku create file-converter-api
-git push heroku main
-```
+### Backend (Render)
 
-### Frontend (Vercel / Netlify)
+Este projeto está deployado no Render usando Docker.
 
-1. **Vercel**
-```bash
-cd frontend
-vercel
-```
+**Passos:**
 
-2. **Netlify**
+1. Criar conta no Render
+2. New Web Service → GitHub
+3. Configurar Dockerfile
+4. Deploy automático via Git push
+
+### Frontend (Vercel)
+
+**Passos:**
+
 ```bash
 cd frontend
 npm run build
-# Deploy da pasta dist/
-```
+vercel --prod
 
 ---
 
 ## 📁 Estrutura do Projeto
 
 ```
+
 java-file-converter/
 │
-├── backend/                          # 🔧 Backend Spring Boot
-│   ├── src/
-│   │   ├── main/
-│   │   │   ├── java/com/fileconverter/
-│   │   │   │   ├── config/           # Configurações (CORS, Swagger)
-│   │   │   │   ├── controller/       # REST Controllers
-│   │   │   │   ├── service/          # Lógica de negócio
-│   │   │   │   ├── converter/        # Implementações Strategy
-│   │   │   │   │   ├── CsvToJsonConverter.java
-│   │   │   │   │   ├── JsonToCsvConverter.java
-│   │   │   │   │   ├── JsonToXmlConverter.java
-│   │   │   │   │   ├── XmlToJsonConverter.java
-│   │   │   │   │   ├── CsvToExcelConverter.java
-│   │   │   │   │   ├── TextToPdfConverter.java
-│   │   │   │   │   └── JsonToPdfConverter.java
-│   │   │   │   ├── factory/          # Factory Pattern
-│   │   │   │   │   └── ConverterFactory.java
-│   │   │   │   ├── model/            # DTOs e Enums
-│   │   │   │   ├── exception/        # Exception Handlers
-│   │   │   │   └── FileConverterApplication.java
-│   │   │   └── resources/
-│   │   │       └── application.properties
-│   │   └── test/
-│   ├── input/                        # Arquivos de exemplo
-│   ├── output/                       # Arquivos convertidos
-│   ├── pom.xml
-│   └── README.md
+├── backend/ # 🔧 Backend Spring Boot
+│ ├── src/
+│ │ ├── main/
+│ │ │ ├── java/com/fileconverter/
+│ │ │ │ ├── config/ # Configurações (CORS, Swagger)
+│ │ │ │ ├── controller/ # REST Controllers
+│ │ │ │ ├── service/ # Lógica de negócio
+│ │ │ │ ├── converter/ # Implementações Strategy
+│ │ │ │ │ ├── CsvToJsonConverter.java
+│ │ │ │ │ ├── JsonToCsvConverter.java
+│ │ │ │ │ ├── JsonToXmlConverter.java
+│ │ │ │ │ ├── XmlToJsonConverter.java
+│ │ │ │ │ ├── CsvToExcelConverter.java
+│ │ │ │ │ ├── TextToPdfConverter.java
+│ │ │ │ │ └── JsonToPdfConverter.java
+│ │ │ │ ├── factory/ # Factory Pattern
+│ │ │ │ │ └── ConverterFactory.java
+│ │ │ │ ├── model/ # DTOs e Enums
+│ │ │ │ ├── exception/ # Exception Handlers
+│ │ │ │ └── FileConverterApplication.java
+│ │ │ └── resources/
+│ │ │ └── application.properties
+│ │ └── test/
+│ ├── input/ # Arquivos de exemplo
+│ ├── output/ # Arquivos convertidos
+│ ├── pom.xml
+│ └── README.md
 │
-├── frontend/                         # 🎨 Frontend Angular
-│   ├── src/
-│   │   ├── app/
-│   │   │   ├── components/
-│   │   │   │   └── file-converter/   # Componente principal
-│   │   │   │       ├── file-converter.component.ts
-│   │   │   │       ├── file-converter.component.html
-│   │   │   │       └── file-converter.component.css
-│   │   │   ├── services/
-│   │   │   │   └── file-conversion.service.ts
-│   │   │   ├── models/
-│   │   │   │   └── conversion.model.ts
-│   │   │   ├── app.component.ts
-│   │   │   └── app.config.ts
-│   │   ├── environments/             # Configurações de ambiente
-│   │   ├── styles.css                # Estilos globais
-│   │   └── index.html
-│   ├── package.json
-│   ├── angular.json
-│   └── README.md
+├── frontend/ # 🎨 Frontend Angular
+│ ├── src/
+│ │ ├── app/
+│ │ │ ├── components/
+│ │ │ │ └── file-converter/ # Componente principal
+│ │ │ │ ├── file-converter.component.ts
+│ │ │ │ ├── file-converter.component.html
+│ │ │ │ └── file-converter.component.css
+│ │ │ ├── services/
+│ │ │ │ └── file-conversion.service.ts
+│ │ │ ├── models/
+│ │ │ │ └── conversion.model.ts
+│ │ │ ├── app.component.ts
+│ │ │ └── app.config.ts
+│ │ ├── environments/ # Configurações de ambiente
+│ │ ├── styles.css # Estilos globais
+│ │ └── index.html
+│ ├── package.json
+│ ├── angular.json
+│ └── README.md
 │
-├── README.md                         # 📖 Este arquivo
-├── DOCUMENTATION.md                  # 📚 Documentação técnica completa
-└── QUICK_START.md                   # ⚡ Guia rápido de instalação
-```
+├── README.md # 📖 Este arquivo
+├── DOCUMENTATION.md # 📚 Documentação técnica completa
+└── QUICK_START.md # ⚡ Guia rápido de instalação
+
+````
 
 ### Componentes Backend (17 arquivos Java)
 
@@ -471,9 +499,10 @@ java-file-converter/
 ```bash
 cd backend
 ./mvnw test
-```
+````
 
 ### Frontend
+
 ```bash
 cd frontend
 ng test
@@ -484,12 +513,15 @@ ng test
 ## 📸 Screenshots
 
 ### Tela Principal
+
 ![Tela Principal](screenshots/file-converter-tela-principal.PNG)
 
 ### Upload e Conversão
+
 ![Upload](screenshots/file-converter-upload.PNG)
 
 ### Resultado
+
 ![Resultado](screenshots/file-converter-resultado.PNG)
 
 ---
@@ -499,6 +531,7 @@ ng test
 ### Exemplo 1: CSV → JSON
 
 **Input (data.csv):**
+
 ```csv
 name,age,city,occupation
 John Doe,30,New York,Software Engineer
@@ -507,6 +540,7 @@ Bob Johnson,35,Chicago,Product Manager
 ```
 
 **Output (data.json):**
+
 ```json
 [
   {
@@ -533,15 +567,17 @@ Bob Johnson,35,Chicago,Product Manager
 ### Exemplo 2: JSON → Excel
 
 **Input (products.json):**
+
 ```json
 [
-  {"product": "Laptop", "price": 1299.99, "stock": 45},
-  {"product": "Mouse", "price": 29.99, "stock": 150},
-  {"product": "Keyboard", "price": 79.99, "stock": 80}
+  { "product": "Laptop", "price": 1299.99, "stock": 45 },
+  { "product": "Mouse", "price": 29.99, "stock": 150 },
+  { "product": "Keyboard", "price": 79.99, "stock": 80 }
 ]
 ```
 
 **Output:** Planilha Excel (.xlsx) com:
+
 - Headers formatados (negrito, fundo cinza)
 - Colunas auto-ajustadas
 - Dados tabulados
@@ -549,6 +585,7 @@ Bob Johnson,35,Chicago,Product Manager
 ### Exemplo 3: Texto → PDF
 
 **Input (document.txt):**
+
 ```
 File Converter - Sistema de Conversão
 Desenvolvido com Java Spring Boot e Angular
@@ -594,6 +631,7 @@ Desenvolvedor Full Stack com experiência em Java, Spring Boot, Node.js e Angula
 - 📍 Localização: Apucarana, PR - Brasil
 
 **Outros Projetos:**
+
 - [Autoflex Inventory System](https://github.com/DiegoRapichan/autoflex-inventory-system) - Spring Boot + React + PostgreSQL
 - [Task Manager API](https://github.com/DiegoRapichan/task-manager-api) - Node.js + Express + PostgreSQL
 - [Learning Project Suggester](https://github.com/DiegoRapichan/learning-project-suggester-api) - Node.js API
@@ -619,4 +657,4 @@ Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para ma
 
 ---
 
-*Desenvolvido com ❤️ por Diego Rapichan*
+_Desenvolvido com ❤️ por Diego Rapichan_
