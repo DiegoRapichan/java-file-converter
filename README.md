@@ -483,20 +483,14 @@ ng test
 
 ## 📸 Screenshots
 
-### Interface Web - Upload e Conversão
-Interface moderna com gradientes e design responsivo.
+### Tela Principal
+![Tela Principal](screenshots/file-converter-tela-principal.PNG)
 
-*[Screenshot da tela principal com upload]*
+### Upload e Conversão
+![Upload](screenshots/file-converter-upload.PNG)
 
-### Swagger UI - Documentação Interativa
-Teste todos os endpoints diretamente no navegador.
-
-*[Screenshot do Swagger UI]*
-
-### Resultado da Conversão
-Detalhes do arquivo convertido com botão de download.
-
-*[Screenshot do resultado]*
+### Resultado
+![Resultado](screenshots/file-converter-resultado.PNG)
 
 ---
 
