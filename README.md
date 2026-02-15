@@ -625,4 +625,4 @@ Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para ma
 
 ---
 
-*Desenvolvido por Diego Rapichan*
+*Desenvolvido com ❤️ por Diego Rapichan*
