@@ -17,7 +17,7 @@ public class CorsConfig {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/api/**")
-                        .allowedOrigins("http://localhost:4200", "http://localhost:3000", "http://localhost:8080", "https://file-converter-frontend-eight.vercel.app")
+                        .allowedOrigins("http://localhost:4200", "http://localhost:3000", "http://localhost:8080", "https://file-converter-frontend-eight.vercel.app", "https://file-converter-frontend.netlify.app")
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                         .allowedHeaders("*");
                         // Removido allowCredentials para evitar conflito
